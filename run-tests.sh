@@ -10,12 +10,11 @@ if [[ $TEST == "fio"  ]]; then
 fi
 
 if [[ $TEST == "UnixBench1"  ]]; then
-    cd byte-unixbench-5.1.3/UnixBench ; ./Run -i 8 -c 1
+    cd byte-unixbench-5.1.3/UnixBench ; ./Run -i 8 -c 1 -v
 fi
 
-# 0: numCpus
-if [[ $TEST == "UnixBench0"  ]]; then
-    cd byte-unixbench-5.1.3/UnixBench ; ./Run -i 8 -c 0
+if [[ $TEST == "UnixBench2"  ]]; then
+    cd byte-unixbench-5.1.3/UnixBench ; ./Run -i 8 -c 2 -v
 fi
 
 # Travis CI timeout workaround

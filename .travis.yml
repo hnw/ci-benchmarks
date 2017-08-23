@@ -1,4 +1,5 @@
-sudo: false
+sudo: true # GCE
+#sudo: false # container-based
 language: c
 
 os:
@@ -14,7 +15,7 @@ env:
   matrix:
     - TEST=fio
     - TEST=UnixBench1
-    - TEST=UnixBench0
+    - TEST=UnixBench2
       
 before_install:
   - |
