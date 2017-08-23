@@ -1,0 +1,33 @@
+sudo: false
+
+os:
+  - linux
+  - osx
+
+addons:
+  apt:
+    packages:
+      - fio
+
+before_install:
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        brew update
+        brew install fio
+    fi
+
+
+install:
+  - wget https://github.com/kdlucas/byte-unixbench/archive/v5.1.3.tar.gz
+  - tar xvzf v5.1.3.tar.gz
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        wget https://gist.github.com/barusan/11033924/raw/a4f8041dd651ba14b03710b383b9b8a194c323fb/UnixBench5.1.3.mavericks.patch
+        cd byte-unixbench-5.1.3/UnixBench
+        patch -p1 < ../../UnixBench5.1.3.mavericks.patch
+    fi
+
+script:
+  - df
+  - fio ./io-test.fio
+  - cd byte-unixbench-5.1.3/UnixBench ; ./Run
