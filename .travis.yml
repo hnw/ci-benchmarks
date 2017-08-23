@@ -1,9 +1,9 @@
-sudo: true
+sudo: false
 language: c
 
 os:
   - linux
-#  - osx
+  - osx
 
 addons:
   apt:
