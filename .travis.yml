@@ -13,7 +13,8 @@ addons:
 env:
   matrix:
     - TEST=fio
-    - TEST=UnixBench
+    - TEST=UnixBench1
+    - TEST=UnixBench0
       
 before_install:
   - |
