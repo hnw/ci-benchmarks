@@ -2,9 +2,9 @@
 bs=4k
 ioengine=libaio
 iodepth=4
-size=10g
+size=5g
 direct=1
-runtime=60
+runtime=30
 directory=.
 filename=io.test.file
 
