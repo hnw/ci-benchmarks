@@ -1,5 +1,5 @@
-sudo: true # GCE
-#sudo: false # container-based
+#sudo: true # GCE
+sudo: false # container-based
 language: c
 
 os:
@@ -33,6 +33,7 @@ install:
             wget https://gist.github.com/barusan/11033924/raw/a4f8041dd651ba14b03710b383b9b8a194c323fb/UnixBench5.1.3.mavericks.patch
             cd byte-unixbench-5.1.3/UnixBench
             patch -p1 < ../../UnixBench5.1.3.mavericks.patch
+            cd ../..
         fi
     fi
 
@@ -42,9 +43,5 @@ script:
 after_script:
   - |
     if [[ $TEST =~ ^UnixBench ]]; then
-        wc -l $(ls -r byte-unixbench-5.1.3/UnixBench/*.log | head -n 1)
-        echo "==== head -1000 ===="
-        head -n 1000 $(ls -r byte-unixbench-5.1.3/UnixBench/*.log | head -n 1)
-        echo "==== tail -5000 ===="
-        tail -n 5000 $(ls -r byte-unixbench-5.1.3/UnixBench/*.log | head -n 1)
+        tail -5000 $(ls -r byte-unixbench-5.1.3/UnixBench/*.log | head -n 1)
     fi
