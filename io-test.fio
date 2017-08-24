@@ -1,6 +1,6 @@
 [global]
 bs=4k
-ioengine=libaio
+ioengine=posixaio
 iodepth=4
 size=5g
 direct=1
